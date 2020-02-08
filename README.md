@@ -1,12 +1,14 @@
 # Horizontal & Vertical Pod Autoscaling in Kubernetes
 
 Implementation of Horizontal & Vertical Pod Autoscaler in Kubernetes.
-In this example, a Flask backend is dockerized and deployed in a Kubernetes Cluster on Google Cloud. Upon request, an expensive calculation is started and Flask returns the calculated result. The autoscaling will be started via an overload of requests. The service will be stressed with requests sent from a Locust application, which in turn triggers the horizontal or vertical scaling. 
+In this example, a Flask backend is dockerized and deployed in a Kubernetes Cluster on Google Cloud. Upon request, an expensive calculation is started and Flask returns the calculated result. The service will be stressed with requests sent from a Locust application, which in turn triggers the horizontal or vertical scaling. 
 
 ![alt text](https://github.com/shinra-tensei/clc-project-2020/blob/master/project_concept.JPG)
 
 ## Prerequisites
-Create a Kubernetes Cluster on Google Cloud.
+1. Create a Kubernetes Cluster on Google Cloud
+2. Install Google Cloud SDK and kubectl
+3. Connect to cluster
 
 ## Create Deployment
 
@@ -29,3 +31,11 @@ Create a Kubernetes Cluster on Google Cloud.
 `kubectl expose deployment flaskcalc --type LoadBalancer --port 8080 --target-port 5000`
 
 `kubectl get services`
+
+## Set up Locust
+
+`pip install locustio`
+
+`locust -f load_test.py`
+
+
