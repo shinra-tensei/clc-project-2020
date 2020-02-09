@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskcalc
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flaskcalc
+  template:
+    metadata:
+      labels:
+        app: flaskcalc
+    spec:
+      containers:
+      - name: flaskcalc
+        image: dreamwalker95/flask_backend:1.0
+        ports:
+        - containerPort: 5000
